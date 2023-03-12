@@ -15,4 +15,9 @@ public class Context : DbContext
     public DbSet<EducationHistory> EducationHistories { get; set; }
     public DbSet<ContactDetail> ContactDetails { get; set; }
     public DbSet<WorkHistory> WorkHistories { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Resume>().HasMany(x => x.Skills);
+    }
 }
