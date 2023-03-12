@@ -11,8 +11,13 @@ public class HomePageService : IHomePageService
     {
         _resumeRepository = resumeRepository;
     }
-    public async Task<Resume> LoadProfileResume(Guid profileResumeId)
+    public async Task<Resume?> LoadProfileResume(Guid profileResumeId)
     {
         return await _resumeRepository.GetResumeByProfileId(profileResumeId);
+    }
+
+    public async Task AddNewProfileResume(Resume profileResume)
+    {
+        await _resumeRepository.AddProfileResume(profileResume);
     }
 }

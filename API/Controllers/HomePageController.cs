@@ -15,10 +15,18 @@ public class HomePageController : ControllerBase
     {
         _homePageService = homePageService;
     }
+
+    [HttpPost]
+    [Route("AddProfileResume")]
+
+    public async Task AddProfileResume(Resume profileResume)
+    {
+        await _homePageService.AddNewProfileResume(profileResume);
+    }
     
     [HttpGet]
     [Route("LoadProfileResume")]
-    public async Task<Resume> LoadProfileResume(Guid profileId)
+    public async Task<Resume?> LoadProfileResume(Guid profileId)
     {
         return await _homePageService.LoadProfileResume(profileId);
     }

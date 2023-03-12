@@ -1,9 +1,12 @@
 
 
+using System.ComponentModel.DataAnnotations;
+
 namespace Persistence.Models;
 
 public class Resume
 {
+    [Key]
     public Guid Id { get; set; }
     public List<WorkHistory>? WorkHistories { get; set; }
     public List<Skill>? Skills { get; set; }

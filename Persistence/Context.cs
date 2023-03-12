@@ -5,6 +5,10 @@ namespace Persistence;
 
 public class Context : DbContext
 {
+    public Context(DbContextOptions<Context> options): base(options)
+    {
+        
+    }
     public DbSet<Resume> Resumes { get; set; }
     public DbSet<Skill> Skills { get; set; }
     public DbSet<Reference> References { get; set; }
