@@ -1,25 +1,22 @@
 using Domain.Interfaces;
-using Microsoft.EntityFrameworkCore;
-using Persistence;
 using Persistence.Models;
 
 namespace Domain.Services;
 
 public class ResumeService : IResumeService
 {
-    private readonly Context _context;
-    public ResumeService(Context context)
+    private readonly IResumeRepository _resumeRepository;
+    public ResumeService(IResumeRepository resumeRepository)
     {
-        _context = context;
+        _resumeRepository = resumeRepository;
     }
     public async Task<Resume?> LoadProfileResume(Guid profileResumeId)
     {
-        return await _context.Resumes.FirstOrDefaultAsync(x => x.ProfileId == profileResumeId);
+        return await _resumeRepository.Get(profileResumeId);
     }
 
     public async Task AddNewProfileResume(Resume profileResume)
     {
-        await  _context.Resumes.AddAsync(profileResume);
-        await _context.SaveChangesAsync();
+        await _resumeRepository.Create(profileResume);
     }
 }

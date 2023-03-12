@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence;
 
@@ -10,9 +11,11 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20230312155508_AddSkillRelationship")]
+    partial class AddSkillRelationship
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -189,11 +192,13 @@ namespace Persistence.Migrations
 
             modelBuilder.Entity("Persistence.Models.Skill", b =>
                 {
-                    b.HasOne("Persistence.Models.Resume", null)
+                    b.HasOne("Persistence.Models.Resume", "Resume")
                         .WithMany("Skills")
                         .HasForeignKey("ResumeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Resume");
                 });
 
             modelBuilder.Entity("Persistence.Models.WorkHistory", b =>
