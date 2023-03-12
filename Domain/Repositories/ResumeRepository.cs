@@ -15,7 +15,7 @@ public class ResumeRepository: IResumeRepository
     }
     public async Task<Resume?> Get(Guid profileResumeId)
     {
-        return await _context.Resumes.FirstOrDefaultAsync(x => x.ProfileId == profileResumeId);
+        return await _context.Resumes.Include(x => x.Skills).FirstOrDefaultAsync(x => x.ProfileId == profileResumeId);
     }
 
     public async Task Create(Resume newResume)

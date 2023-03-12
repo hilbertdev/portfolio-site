@@ -21,6 +21,5 @@ public class ResumeServiceTests
         
         //Assert 
         mockResumeRepoMock.Verify(x => x.Create(It.IsAny<Resume>()), Times.Once);
-
     }
 }
