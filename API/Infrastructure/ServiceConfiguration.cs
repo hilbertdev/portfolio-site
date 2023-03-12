@@ -1,6 +1,5 @@
-using Application.Interfaces;
-using Application.Repositories;
-using Application.Services;
+using Domain.Interfaces;
+using Domain.Services;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
@@ -10,8 +9,7 @@ public static class ServiceConfiguration
 {
     public static void ConfigureServices(IServiceCollection serviceCollection, IConfiguration configuration)
     {
-         serviceCollection.AddScoped<IResumeRepository,ResumeRepository>();
-         serviceCollection.AddScoped<IHomePageService, HomePageService>();
+        serviceCollection.AddScoped<IResumeService, ResumeService>();
          serviceCollection.AddDbContext<Context>(options =>
              options.UseMySQL(configuration.GetConnectionString("DefaultConnection") ?? string.Empty));
     }

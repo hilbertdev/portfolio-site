@@ -16,10 +16,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Domain\Domain.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
       <Reference Include="Microsoft.EntityFrameworkCore.SqlServer">
         <HintPath>..\..\..\.nuget\packages\microsoft.entityframeworkcore.sqlserver\8.0.0-preview.1.23111.4\lib\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll</HintPath>
       </Reference>

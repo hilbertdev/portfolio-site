@@ -1,8 +1,8 @@
 using Persistence.Models;
 
-namespace Application.Interfaces;
+namespace Domain.Interfaces;
 
-public interface IHomePageService
+public interface IResumeService
 {
     Task<Resume?> LoadProfileResume(Guid profileResumeId);
 

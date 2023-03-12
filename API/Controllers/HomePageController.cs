@@ -1,4 +1,4 @@
-using Application.Interfaces;
+using Domain.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Persistence.Models;
 
@@ -9,11 +9,11 @@ namespace API.Controllers;
 
 public class HomePageController : ControllerBase
 {
-    private readonly IHomePageService _homePageService;
+    private readonly IResumeService _resumeService;
 
-    public HomePageController(IHomePageService homePageService)
+    public HomePageController(IResumeService resumeService)
     {
-        _homePageService = homePageService;
+        _resumeService = resumeService;
     }
 
     [HttpPost]
@@ -21,13 +21,13 @@ public class HomePageController : ControllerBase
 
     public async Task AddProfileResume(Resume profileResume)
     {
-        await _homePageService.AddNewProfileResume(profileResume);
+        await _resumeService.AddNewProfileResume(profileResume);
     }
     
     [HttpGet]
     [Route("LoadProfileResume")]
     public async Task<Resume?> LoadProfileResume(Guid profileId)
     {
-        return await _homePageService.LoadProfileResume(profileId);
+        return await _resumeService.LoadProfileResume(profileId);
     }
 }
