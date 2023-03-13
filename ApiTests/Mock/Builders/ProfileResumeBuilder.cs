@@ -6,19 +6,11 @@ namespace HomePageServiceTests.Mock.Builders;
 
 public  class ProfileResumeBuilder
 {
-    private Guid? _profileId = null;
-
     public Resume Build()
     {
         return new Resume
         {
-            ProfileId = _profileId,
+            ProfileId = Guid.NewGuid(),
         };
-    }
-
-    public  ProfileResumeBuilder WithProfileId(Guid? profileId)
-    {
-        _profileId = profileId;
-        return this;
     }
 }
