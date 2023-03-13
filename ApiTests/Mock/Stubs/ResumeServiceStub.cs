@@ -1,15 +1,18 @@
 using Domain.Interfaces;
+using Domain.Repositories;
 using Domain.Services;
 using Moq;
+using Persistence;
+using Persistence.Models;
 
 namespace HomePageServiceTests.Mock.Stubs;
 
 public class ResumeServiceStub
 {
-    private readonly Mock<IResumeRepository> _resumeRepository = new Mock<IResumeRepository>();
+   
     
-    public ResumeService CreateStub(IResumeRepository? resumeRepository)
+    public ResumeService CreateStub(Context context)
     {
-        return new ResumeService(resumeRepository ?? _resumeRepository.Object);
+        return new ResumeService(context);
     }
 }

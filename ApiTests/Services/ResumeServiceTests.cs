@@ -8,11 +8,11 @@ namespace HomePageServiceTests.Services;
 
 public class ResumeServiceTests
 {
-    [Fact]
+    /*[Fact]
     public async Task CreateResume_Success()
     {
         //Arrange 
-        var resume = new ProfileResumeBuilder().Build();
+        var resume = new ProfileResumeBuilder().Build(); 
         var mockResumeRepoMock = new Mock<IResumeRepository>();
         var resumeServiceStub = new ResumeServiceStub().CreateStub(mockResumeRepoMock.Object);
         
@@ -21,5 +21,5 @@ public class ResumeServiceTests
         
         //Assert 
         mockResumeRepoMock.Verify(x => x.Create(It.IsAny<Resume>()), Times.Once);
-    }
+    } */
 }

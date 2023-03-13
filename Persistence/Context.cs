@@ -18,6 +18,15 @@ public class Context : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Resume>().HasMany(x => x.Skills);
+        modelBuilder.Entity<Resume>()
+            .HasMany(x => x.Skills);
+        modelBuilder.Entity<Resume>().HasMany(x => x.References);
+        modelBuilder.Entity<Resume>().HasMany(x => x.WorkHistories);
+        modelBuilder.Entity<Resume>().HasOne(x => x.ContactDetail);
+        modelBuilder.Entity<Resume>().HasMany(x => x.EducationHistories);
+        modelBuilder.Entity<Resume>().HasKey(x => x.ProfileId);
+
+
+
     }
 }
