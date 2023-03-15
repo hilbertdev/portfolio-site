@@ -29,9 +29,9 @@ public class SkillService : ISkillService
        return result.FirstOrDefault();
     }
 
-    public void UpdateSkill(Skill skill)
+    public async Task UpdateSkill(Skill skill)
     {
-         _skillRepository.Update(skill);
+         await _skillRepository.Update(skill);
     }
 
     public async Task<IEnumerable<Skill>> GetSkills()

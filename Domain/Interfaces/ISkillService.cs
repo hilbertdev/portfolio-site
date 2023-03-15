@@ -7,6 +7,6 @@ public interface ISkillService
 {
     Task AddSkill(Skill skill);
     Task<Skill?> GetSkill(Guid id);
-    void UpdateSkill(Skill skill);
+    Task UpdateSkill(Skill skill);
     Task<IEnumerable<Skill>> GetSkills();
 }

@@ -11,7 +11,7 @@ public class GenericRepository<TEntity> where TEntity : class
 
     public GenericRepository(Context context)
     {
-        context = context;
+        this.context = context;
         dbSet = context.Set<TEntity>();
     }
 
@@ -72,9 +72,10 @@ public class GenericRepository<TEntity> where TEntity : class
         dbSet.Remove(entityToDelete);
     }
 
-    public  void Update(TEntity entityToUpdate)
+    public async Task  Update(TEntity entityToUpdate)
     {
         dbSet.Attach(entityToUpdate);
         context.Entry(entityToUpdate).State = EntityState.Modified;
+        await context.SaveChangesAsync();
     }
 }

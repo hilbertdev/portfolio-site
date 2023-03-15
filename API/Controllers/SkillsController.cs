@@ -24,7 +24,7 @@ public class SkillsController : ControllerBase
         await _skillService.AddSkill(skill);
     }
     
-    [HttpPost]
+    [HttpPut]
     [Route("UpdateSkill")]
     public async Task UpdateSkill(Skill skill)
     {
@@ -39,9 +39,10 @@ public class SkillsController : ControllerBase
     }
     
     [HttpGet]
-    [Route("GetSkill")]
+    [Route("GetSkills")]
     public async Task<IEnumerable<Skill>> GetSkills()
     {
        return await Task.Run(() =>_skillService.GetSkills());
     }
+    
 }
